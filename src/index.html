@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kauã Vilarim — Portfólio</title>
+    <meta name="description" content="Portfólio de Kauã Vilarim — Desenvolvedor de software (Java | Spring Boot | APIs REST)." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind (Play CDN) + DaisyUI CSS (CDN)  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: Inter, ui-sans-serif, system-ui; }
+      .hero-bg { 
+        background: radial-gradient(60rem 30rem at 10% -10%, rgba(99,102,241,.25), transparent 55%),
+                    radial-gradient(40rem 25rem at 90% 10%, rgba(34,197,94,.20), transparent 55%),
+                    radial-gradient(60rem 40rem at 50% 100%, rgba(236,72,153,.18), transparent 60%);
+      }
+      .grid-dots { background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 16px 16px; opacity:.08; }
+    </style>
+  </head>
+  <body class="bg-base-100 text-base-content min-h-screen relative">
+    <!-- global bg -->
+    <div class="pointer-events-none fixed inset-0 -z-20 hero-bg"></div>
+    <div class="pointer-events-none fixed inset-0 -z-10 grid-dots"></div>
+
+    <!-- NAVBAR (fix: horizontal, responsive) -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-base-100/70 border-b border-base-content/10">
+      <div class="navbar container mx-auto px-4">
+        <div class="navbar-start">
+          <a href="#inicio" class="btn btn-ghost px-2 md:px-3 text-lg font-extrabold tracking-tight">KV <span class="hidden sm:inline">• Kauã Vilarim</span></a>
+        </div>
+        <div class="navbar-center hidden md:flex">
+          <ul class="menu menu-horizontal">
+            <li><a class="nav-link" href="#projetos">Projetos</a></li>
+            <li><a class="nav-link" href="#stack">Stack</a></li>
+            <li><a class="nav-link" href="#jornada">Jornada</a></li>
+            <li><a class="nav-link" href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end gap-2">
+          <a href="https://github.com/Miraliv" target="_blank" class="btn btn-ghost btn-sm" aria-label="GitHub"><i data-lucide="github"></i></a>
+          <a href="https://www.linkedin.com/in/kau%C3%A3-vilarim/" target="_blank" class="btn btn-ghost btn-sm" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+          <button id="themeToggle" class="btn btn-ghost btn-sm" aria-label="Alternar tema">
+            <i data-lucide="sun" class="sun hidden"></i>
+            <i data-lucide="moon" class="moon"></i>
+          </button>
+          <div class="md:hidden dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-square"><i data-lucide="menu"></i></label>
+            <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <li><a href="#projetos">Projetos</a></li>
+              <li><a href="#stack">Stack</a></li>
+              <li><a href="#jornada">Jornada</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO (refeito) -->
+    <section id="inicio" class="relative">
+      <div class="container mx-auto px-5 pt-12 md:pt-16">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div class="order-2 md:order-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="badge badge-success badge-outline">Disponível para freelas</span>
+              <span class="badge badge-outline">Recife, PE</span>
+            </div>
+            <h1 class="mt-5 text-5xl md:text-7xl font-extrabold leading-tight">Kauã Vilarim</h1>
+            <h2 class="mt-2 text-xl md:text-2xl opacity-90">Desenvolvedor de software</h2>
+            <p class="mt-4 text-base md:text-lg opacity-90 max-w-xl">Java • Spring Boot • APIs RESTful • SQL</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+              <a href="https://github.com/Miraliv" target="_blank" class="btn btn-outline"><i data-lucide="github" class="mr-2 h-4 w-4"></i> GitHub</a>
+              <a href="https://www.linkedin.com/in/kau%C3%A3-vilarim/" target="_blank" class="btn btn-outline"><i data-lucide="linkedin" class="mr-2 h-4 w-4"></i> LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="order-1 md:order-2 relative flex justify-center">
+            <div class="relative w-64 md:w-80">
+              <div class="absolute -inset-6 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-primary/50 via-secondary/40 to-accent/50"></div>
+              <div class="card bg-base-100/40 backdrop-blur border border-base-content/10 rounded-3xl shadow">
+                <figure class="p-6">
+                  <div class="avatar placeholder">
+                    <div class="w-44 md:w-56 rounded-full bg-neutral/20 text-neutral-content ring ring-primary/60 ring-offset-4 ring-offset-base-100">
+                      <span class="text-6xl md:text-7xl font-extrabold">KV</span>
+                    </div>
+                  </div>
+                </figure>
+                <div class="card-body pt-0">
+                  <div class="stats shadow">
+                    <div class="stat"><div class="stat-title">Back-end</div><div class="stat-value text-lg">Java + Spring</div><div class="stat-desc">APIs REST</div></div>
+                    <div class="stat"><div class="stat-title">Banco</div><div class="stat-value text-lg">MySQL</div><div class="stat-desc">JPA/Hibernate</div></div>
+                    <div class="stat"><div class="stat-title">Dev</div><div class="stat-value text-lg">Git & Docker</div><div class="stat-desc">Fluxo limpo</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 flex justify-center">
+          <a href="#projetos" class="btn btn-circle btn-ghost animate-bounce" aria-label="Role"><i data-lucide="chevrons-down"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS (thumb padrão) -->
+    <section id="projetos" class="relative py-20">
+      <div class="container mx-auto px-5">
+        <div class="flex items-end justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Projetos em destaque</h2>
+            <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
+          </div>
+          <div role="tablist" class="tabs tabs-bordered">
+            <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
+            <button role="tab" class="tab" data-filter="backend">Back-end</button>
+            <button role="tab" class="tab" data-filter="frontend">Front-end</button>
+            <button role="tab" class="tab" data-filter="bot">Bots</button>
+          </div>
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Use SEMPRE a mesma thumbnail por enquanto -->
+          <!-- Card 1 -->
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
+            <figure class="relative">
+              <img src="https://raw.githubusercontent.com/Miraliv/SpringAI/refs/heads/main/Captura%20de%20Tela.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
+              <div class="absolute right-3 top-3 badge badge-primary">Spring Boot</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Apiário CRM (CRUD)</h3>
+              <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL. Deploy com Docker/Railway.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
+            <figure class="relative">
+              <img src="https://raw.githubusercontent.com/Miraliv/SpringAI/refs/heads/main/Captura%20de%20Tela.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
+              <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Bot de WhatsApp (PoC)</h3>
+              <p>Microsserviço Java que recebe comandos e interage com APIs internas via HTTP.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">HTTP</div><div class="badge badge-outline">Microsserviços</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
+            <figure class="relative">
+              <img src="https://raw.githubusercontent.com/Miraliv/SpringAI/refs/heads/main/Captura%20de%20Tela.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
+              <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Portfólio Artístico</h3>
+              <p>Landing page responsiva com vídeo/grafismos, acessibilidade e bom desempenho.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">Tailwind</div><div class="badge badge-outline">A11y</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,frontend">
+            <figure class="relative">
+              <img src="https://raw.githubusercontent.com/Miraliv/SpringAI/refs/heads/main/Captura%20de%20Tela.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
+              <div class="absolute right-3 top-3 badge">Fullstack</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">E-commerce Lite</h3>
+              <p>Catálogo e carrinho. API REST + SPA minimalista consumindo via Axios.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Spring Security</div><div class="badge badge-outline">Axios</div><div class="badge badge-outline">REST</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
+            <figure class="relative">
+              <img src="https://raw.githubusercontent.com/Miraliv/SpringAI/refs/heads/main/Captura%20de%20Tela.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
+              <div class="absolute right-3 top-3 badge badge-info">Dashboard</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Dashboard Analytics</h3>
+              <p>Layout com componentes DaisyUI e gráficos plugáveis.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">DaisyUI</div><div class="badge badge-outline">UX</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
+            <figure class="relative">
+              <img src="https://raw.githubusercontent.com/Miraliv/SpringAI/refs/heads/main/Captura%20de%20Tela.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
+              <div class="absolute right-3 top-3 badge badge-warning">Automação</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Rotinas & Webhooks</h3>
+              <p>Jobs agendados e consumo de webhooks para sincronização de dados.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Scheduling</div><div class="badge badge-outline">Webhooks</div><div class="badge badge-outline">Resiliência</div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK (reforçado) -->
+    <section id="stack" class="py-20">
+      <div class="container mx-auto px-5">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Tech Stack</h2>
+        <p class="opacity-80 mt-2">Ferramentas e práticas que uso no dia a dia.</p>
+
+        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <h3 class="card-title">Back‑end</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">Java</span>
+                <span class="badge badge-outline">Spring Boot</span>
+                <span class="badge badge-outline">Spring Data JPA</span>
+                <span class="badge badge-outline">RESTful API</span>
+                <span class="badge badge-outline">Microservices</span>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <h3 class="card-title">Banco de Dados</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">MySQL</span>
+                <span class="badge badge-outline">NoSQL</span>
+                <span class="badge badge-outline">JPA/Hibernate</span>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <h3 class="card-title">Qualidade</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">JUnit</span>
+                <span class="badge badge-outline">Boas práticas</span>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <h3 class="card-title">DevOps</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">Docker</span>
+                <span class="badge badge-outline">Git & GitHub</span>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <h3 class="card-title">Processos</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">Scrum</span>
+                <span class="badge badge-outline">Kanban</span>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <h3 class="card-title">Idiomas</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-outline">Inglês avançado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JORNADA (Timeline with icon snapped to the start) -->
+    <section id="jornada" class="py-20">
+      <div class="container mx-auto px-5">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Jornada</h2>
+        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-8">
+          <!-- Netmake -->
+          <li>
+            <div class="timeline-start"><i data-lucide="headphones"></i></div>
+            <div class="timeline-box">
+              <time class="opacity-70 font-mono">Ago 2024 — Dez 2024</time>
+              <h3 class="font-bold text-lg">Netmake — Analista de Suporte (Estágio)</h3>
+              <p class="mt-2">Atendimento técnico internacional para clientes do Scriptcase, em equipe global, utilizando inglês ativamente na comunicação e resolução de dúvidas e incidentes.</p>
+            </div>
+            <hr/>
+          </li>
+          <!-- Prefeitura do Recife -->
+          <li>
+            <hr/>
+            <div class="timeline-start"><i data-lucide="server"></i></div>
+            <div class="timeline-box">
+              <time class="opacity-70 font-mono">Mar 2024 — Ago 2024</time>
+              <h3 class="font-bold text-lg">Prefeitura do Recife — Desenvolvedor Java (Setor administrativo) (Estágio)</h3>
+              <p class="mt-2">Administração de dados de servidores, validação de informações e liberação de acessos. Automação de processos com Java e Spring, quadruplicando a produtividade da equipe, e digitalização de documentos com sistema web próprio.</p>
+              <ul class="list-disc ml-5 mt-3 text-sm opacity-90">
+                <li>APIs RESTful com Java + Spring Boot</li>
+                <li>Persistência com Spring Data JPA (MySQL)</li>
+                <li>Testes com JUnit</li>
+                <li>Deploy com Docker</li>
+                <li>Integração back‑end ↔ front‑end</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTATO (sem backend; copiar/abrir) -->
+    <section id="contato" class="py-20">
+      <div class="container mx-auto px-5">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Vamos conversar?</h2>
+            <p class="opacity-80 mt-2 max-w-xl">Sem formulário nem backend: use os botões abaixo para abrir seu cliente de e‑mail ou copiar os dados.</p>
+            <div class="mt-6 space-y-3">
+              <div class="flex items-center gap-3"><i data-lucide="mail"></i> <a class="link" href="mailto:kauavilarim@gmail.com?subject=Projeto">kauavilarim@gmail.com</a> <button class="btn btn-xs" data-copy="kauavilarim@gmail.com">copiar</button></div>
+              <div class="flex items-center gap-3"><i data-lucide="phone"></i> <span>(81) 99814-6314</span> <button class="btn btn-xs" data-copy="(81) 99814-6314">copiar</button></div>
+              <div class="flex items-center gap-3"><i data-lucide="map-pin"></i> Recife, Pernambuco</div>
+            </div>
+          </div>
+          <div>
+            <div class="card bg-base-100/40 backdrop-blur border border-base-content/10">
+              <div class="card-body">
+                <h3 class="card-title">Links rápidos</h3>
+                <div class="flex flex-col gap-2">
+                  <a class="link link-hover" href="https://github.com/Miraliv" target="_blank"><i data-lucide="github" class="inline h-4 w-4 mr-2"></i> GitHub</a>
+                  <a class="link link-hover" href="https://www.linkedin.com/in/kau%C3%A3-vilarim/" target="_blank"><i data-lucide="linkedin" class="inline h-4 w-4 mr-2"></i> LinkedIn</a>
+                  <a class="link link-hover" href="#projetos"><i data-lucide="folder-open" class="inline h-4 w-4 mr-2"></i> Projetos</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-10 border-t border-base-content/10">
+      <div class="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="opacity-70">© <span id="year"></span> Kauã Vilarim — Feito com Tailwind + DaisyUI (CDN).</p>
+        <a class="btn btn-ghost btn-sm" href="#inicio" aria-label="Topo"><i data-lucide="arrow-up"></i></a>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Icons
+      lucide.createIcons();
+
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Theme toggle (fix: light <-> night) + persist
+      (function(){
+        const root = document.documentElement;
+        const btn = document.getElementById('themeToggle');
+        const saved = localStorage.getItem('theme');
+        if (saved) root.setAttribute('data-theme', saved);
+        const sync = () => {
+          const t = root.getAttribute('data-theme') || 'night';
+          btn.querySelector('.sun').classList.toggle('hidden', t !== 'light');
+          btn.querySelector('.moon').classList.toggle('hidden', t === 'light');
+        };
+        sync();
+        btn.addEventListener('click', () => {
+          const current = root.getAttribute('data-theme') || 'night';
+          const next = current === 'light' ? 'night' : 'light';
+          root.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          sync();
+        });
+      })();
+
+      // Filter projects (front-only)
+      (function(){
+        const tabs = document.querySelectorAll('[data-filter]');
+        const cards = document.querySelectorAll('[data-cats]');
+        tabs.forEach(tab => tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('tab-active'));
+          tab.classList.add('tab-active');
+          const f = tab.dataset.filter;
+          cards.forEach(c => {
+            const cats = c.dataset.cats.split(',');
+            c.classList.toggle('hidden', !(f === 'all' || cats.includes(f)));
+          });
+        }));
+      })();
+
+      // Copy buttons
+      (function(){
+        document.querySelectorAll('[data-copy]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const text = btn.getAttribute('data-copy');
+            try { await navigator.clipboard.writeText(text); btn.textContent = 'copiado!'; setTimeout(()=> btn.textContent='copiar', 1200); } catch(e){ console.error(e); }
+          });
+        });
+      })();
+
+      // Active nav link on scroll
+      (function(){
+        const links = document.querySelectorAll('.nav-link');
+        const ids = Array.from(links).map(a => a.getAttribute('href'));
+        const sections = ids.map(id => document.querySelector(id));
+        const onScroll = () => {
+          const y = window.scrollY + 120;
+          let active = 0;
+          sections.forEach((sec, idx) => { if(sec && sec.offsetTop <= y) active = idx; });
+          links.forEach((a, idx) => a.classList.toggle('active', idx === active));
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+  </body>
+</html>

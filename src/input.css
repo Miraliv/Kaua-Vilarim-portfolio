@@ -1,0 +1,17 @@
+/* src/input.css */
+
+/* referencia o config (necessário se estiver usando tailwind.config.js) */
+@config "../tailwind.config.js";
+
+/* importa todo o Tailwind (v4 usa @import "tailwindcss") */
+@import "tailwindcss";
+
+/* se quiser, adicione suas variáveis e estilos customizados aqui */
+@theme {
+  /* exemplo: --my-brand: #6366f1; */
+}
+
+/* seus styles custom (ex: animações) */
+@layer base {
+  /* ... */
+}
