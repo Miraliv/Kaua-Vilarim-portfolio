@@ -26,11 +26,20 @@ Uma imagem vale mais que mil palavras. Veja um preview da interface:
 
 ## 🧱 Estrutura do projeto
 ```
-├── index.html          # Estrutura principal (HTML + scripts inline)
-└── images/             # Thumbs e imagens do portfólio
-├── Apiario.png
-├── SpringAI_interface.png
-└── portfolio.png
+├── src/
+│   ├── images/
+│   │   ├── Apiario.png
+│   │   ├── portfolio.png
+│   │   └── SpringAI_interface.png
+│   ├── index.html
+│   ├── input.css
+│   └── output.css
+├── .gitattributes
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── README.md
+└── tailwind.config.js
 ```
 
 **ℹ️ Observação**: O projeto usa Tailwind Play CDN e DaisyUI (CDN), então não há necessidade de pipeline de build para começar.
