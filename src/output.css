@@ -282,9 +282,6 @@
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
   }
-  .ml-5 {
-    margin-left: calc(var(--spacing) * 5);
-  }
   .flex {
     display: flex;
   }
@@ -326,9 +323,6 @@
   }
   .animate-bounce {
     animation: var(--animate-bounce);
-  }
-  .list-disc {
-    list-style-type: disc;
   }
   .flex-col {
     flex-direction: column;
@@ -446,10 +440,6 @@
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-xl {
     font-size: var(--text-xl);
