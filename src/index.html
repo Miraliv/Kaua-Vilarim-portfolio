@@ -117,72 +117,92 @@
 
     <!-- PROJETOS (thumb padrão) -->
     <section id="projetos" class="relative py-20">
-      <div class="container mx-auto px-5">
-        <div class="flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h2 class="text-3xl md:text-4xl font-extrabold">Projetos em destaque</h2>
-            <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
-          </div>
-          <div role="tablist" class="tabs tabs-bordered">
-            <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
-            <button role="tab" class="tab" data-filter="backend">Back-end</button>
-            <button role="tab" class="tab" data-filter="frontend">Front-end</button>
-            <button role="tab" class="tab" data-filter="bot">Bots</button>
-          </div>
-        </div>
-
-        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Card 1 -->
-          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
-            <figure class="relative">
-              <img src="images/Apiario.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
-              <div class="absolute right-3 top-3 badge badge-primary">Banco de dados</div>
-            </figure>
-            <div class="card-body">
-              <h3 class="card-title">Apiário CRM (CRUD)</h3>
-              <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL. Deploy com Docker/Railway. Possui front-end simples desenvolvido com Bootstrap</p>
-              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div></div><div class="badge badge-outline">Bootstrap</div>
-              <div class="card-actions justify-end mt-4">
-                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
-            <figure class="relative">
-              <img src="images/SpringAI_interface.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
-              <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
-            </figure>
-            <div class="card-body">
-              <h3 class="card-title">ChatBot inteligente</h3>
-              <p>Feito em Java 21 com Spring Boot, integrado ao modelo Llama3 (via Ollama). Interface web simples com Tailwind+DaisyUI+JavaScript e chamadas assíncronas via Axios.</p>
-              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring AI</div><div class="badge badge-outline">HTML</div></div><div class="badge badge-outline">Tailwind</div>
-              <div class="card-actions justify-end mt-4">
-                <a href="https://github.com/Miraliv/SpringAI" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
-            <figure class="relative">
-              <img src="images/portfolio.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover" loading="lazy" />
-              <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
-            </figure>
-            <div class="card-body">
-              <h3 class="card-title">Este portfólio</h3>
-              <p>Este próprio portfólio desenvolvido com HTML+Tailwind+DaisyUI</p>
-              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">TailwindCSS</div><div class="badge badge-outline">DaisyUI</div></div>
-              <div class="card-actions justify-end mt-4">
-                <a href="https://github.com/Miraliv/Kaua-Vilarim-portfolio" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-              </div>
-            </div>
-          </article>
-        </div>
+  <div class="container mx-auto px-5">
+    <div class="flex items-end justify-between gap-4 flex-wrap">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold">Projetos em destaque</h2>
+        <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
       </div>
-    </section>
+      <div role="tablist" class="tabs tabs-bordered">
+        <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
+        <button role="tab" class="tab" data-filter="backend">Back-end</button>
+        <button role="tab" class="tab" data-filter="frontend">Front-end</button>
+        <button role="tab" class="tab" data-filter="bot">Bots</button>
+      </div>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
+        <figure class="relative">
+          <img src="images/Apiario.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" onclick="openModal('images/Apiario.png')" />
+          <div class="absolute right-3 top-3 badge badge-primary">Banco de dados</div>
+        </figure>
+        <div class="card-body">
+          <h3 class="card-title">Apiário CRM (CRUD)</h3>
+          <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL. Deploy com Docker/Railway. Possui front-end simples desenvolvido com Bootstrap</p>
+          <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div><div class="badge badge-outline">Bootstrap</div></div>
+          <div class="card-actions justify-end mt-4">
+            <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
+        <figure class="relative">
+          <img src="images/SpringAI_interface.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" onclick="openModal('images/SpringAI_interface.png')" />
+          <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
+        </figure>
+        <div class="card-body">
+          <h3 class="card-title">ChatBot inteligente</h3>
+          <p>Feito em Java 21 com Spring Boot, integrado ao modelo Llama3 (via Ollama). Interface web simples com Tailwind+DaisyUI+JavaScript e chamadas assíncronas via Axios.</p>
+          <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring AI</div><div class="badge badge-outline">HTML</div><div class="badge badge-outline">Tailwind</div></div>
+          <div class="card-actions justify-end mt-4">
+            <a href="https://github.com/Miraliv/SpringAI" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
+        <figure class="relative">
+          <img src="images/portfolio.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" onclick="openModal('images/portfolio.png')" />
+          <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
+        </figure>
+        <div class="card-body">
+          <h3 class="card-title">Este portfólio</h3>
+          <p>Este próprio portfólio desenvolvido com HTML+Tailwind+DaisyUI</p>
+          <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">TailwindCSS</div><div class="badge badge-outline">DaisyUI</div></div>
+          <div class="card-actions justify-end mt-4">
+            <a href="https://github.com/Miraliv/Kaua-Vilarim-portfolio" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <input type="checkbox" id="imageModal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box relative w-[90vw] h-[90vh] max-w-none max-h-none p-0">
+      <img id="modalImage" src="" alt="Imagem ampliada" class="w-full h-full object-contain" />
+      <label for="imageModal" class="btn btn-circle btn-sm absolute top-2 right-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </label>
+    </div>
+    <label for="imageModal" class="modal-backdrop"></label>
+  </div>
+</section>
+
+<script>
+function openModal(imageSrc) {
+  const modalToggle = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  modalImage.src = imageSrc;
+  modalToggle.checked = true;
+}
+</script>
 
     <!-- STACK (reforçado) -->
     <section id="stack" class="py-20">
@@ -333,7 +353,7 @@
 
     <footer class="py-10 border-t border-base-content/10">
       <div class="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="opacity-70">© <span id="year"></span> Kauã Vilarim — Feito com Tailwind + DaisyUI (CDN).</p>
+        <p class="opacity-70">© <span id="year"></span> Kauã Vilarim.</p>
         <a class="btn btn-ghost btn-sm" href="#inicio" aria-label="Topo"><i data-lucide="arrow-up"></i></a>
       </div>
     </footer>
