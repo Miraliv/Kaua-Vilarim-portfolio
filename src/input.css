@@ -1,9 +1,6 @@
-/* src/input.css (VERSÃO CORRETA E FINAL) */
+/* src/input.css (LIMPO E PRONTO) */
 @import "tailwindcss";
 
-/* * Usando a sintaxe de 'flags' que você encontrou na documentação.
-* Define 'light' e 'night', e marca 'night' como o default.
-*/
 @plugin "daisyui" {
   themes: light, night --default;
 }

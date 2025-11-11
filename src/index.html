@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="night">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kauã Vilarim — Portfólio</title>
@@ -8,416 +8,390 @@
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&family=Space-Mono:wght@400;700&display=swap" rel="stylesheet" />
 
     <link href="./output.css" rel="stylesheet" />
 
     <script src="https://unpkg.com/lucide@latest"></script>
+</head>
 
-    <style>
-      /* Para o cursor piscando do terminal */
-      .terminal-input::after {
-        content: "▋";
-        animation: blink 1s step-end infinite;
-      }
-      @keyframes blink {
-        50% { opacity: 0; }
-      }
-      /* Força a fonte mono no terminal */
-      #terminal-modal {
-        font-family: "JetBrains Mono", monospace;
-      }
-    </style>
+<body class="text-base-content min-h-screen relative">
+    
+    <!-- VANTA BACKGROUND: elemento que receberá o efeito Vanta (three.js). -->
+    <div id="vanta-bg" class="fixed inset-0 -z-20"></div>
 
-  </head>
+    <!-- HEADER / NAVBAR: navegação principal, responsiva. -->
+    <header class="sticky top-0 z-50 border-b border-base-content/10">
+        <div class="navbar container mx-auto px-4">
+            <div class="navbar-start">
+                <!-- Logo / marca: link para inicio -->
+                <a href="#inicio" class="btn btn-ghost px-2 md:px-3 text-lg md:text-2xl font-extrabold tracking-tight font-heading">KV <span class="hidden sm:inline">• Kauã Vilarim</span></a>
+            </div>
+            <div class="navbar-center hidden md:flex">
+                <!-- Links principais (visíveis em telas médias/maiores) -->
+                <ul class="menu menu-horizontal text-base md:text-lg">
+                    <li><a class="nav-link" href="#projetos">Projetos</a></li>
+                    <li><a class="nav-link" href="#stack">Stack</a></li>
+                    <li><a class="nav-link" href="#jornada">Jornada</a></li>
+                    <li><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end gap-2">
+                <!-- Ícones sociais -->
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-ghost btn-sm" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="https://www.linkedin.com/in/kaua-vilarim/" target="_blank" class="btn btn-ghost btn-sm" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
 
-  <body class="bg-base-100 text-base-content min-h-screen relative">
-    <div class="pointer-events-none fixed inset-0 -z-20 hero-bg"></div>
-    <div class="pointer-events-none fixed inset-0 -z-10 grid-dots"></div>
+                <!-- THEME TOGGLE: alterna ícone/tema (sun/moon). -->
+                <button id="themeToggle" class="btn btn-ghost btn-sm" aria-label="Alternar tema">
+                    <!-- Ícones controlados via JS (mostra/esconde) -->
+                    <i data-lucide="sun" class="sun hidden"></i>
+                    <i data-lucide="moon" class="moon"></i>
+                </button>
 
-    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-base-100/70 border-b border-base-content/10">
-      <div class="navbar container mx-auto px-4">
-        <div class="navbar-start">
-          <a href="#inicio" class="btn btn-ghost px-2 md:px-3 text-lg md:text-2xl font-extrabold tracking-tight">KV <span class="hidden sm:inline">• Kauã Vilarim</span></a>
+                <!-- MENU MOBILE: dropdown (aparece em md:hidden) -->
+                <div class="md:hidden dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-ghost btn-square"><i data-lucide="menu"></i></label>
+                    <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base">
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#stack">Stack</a></li>
+                        <li><a href="#jornada">Jornada</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="navbar-center hidden md:flex">
-          <ul class="menu menu-horizontal text-base md:text-lg">
-            <li><a class="nav-link" href="#solucoes">Soluções</a></li>
-            <li><a class="nav-link" href="#projetos">Projetos</a></li>
-            <li><a class="nav-link" href="#stack">Stack</a></li>
-            <li><a class="nav-link" href="#jornada">Jornada</a></li>
-            <li><a class="nav-link" href="#contato">Contato</a></li>
-          </ul>
-        </div>
-        <div class="navbar-end gap-2">
-          <a href="https://github.com/Miraliv" target="_blank" class="btn btn-ghost btn-sm" aria-label="GitHub"><i data-lucide="github"></i></a>
-          <a href="https://www.linkedin.com/in/kaua-vilarim/" target="_blank" class="btn btn-ghost btn-sm" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-          <button id="themeToggle" class="btn btn-ghost btn-sm" aria-label="Alternar tema">
-            <i data-lucide="sun" class="sun hidden"></i>
-            <i data-lucide="moon" class="moon"></i>
-          </button>
-          <div class="md:hidden dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-square"><i data-lucide="menu"></i></label>
-            <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base">
-              <li><a href="#solucoes">Soluções</a></li>
-              <li><a href="#projetos">Projetos</a></li>
-              <li><a href="#stack">Stack</a></li>
-              <li><a href="#jornada">Jornada</a></li>
-              <li><a href="#contato">Contato</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </header>
 
-    <section id="inicio" class="relative">
-      <div class="container mx-auto px-5 pt-12 md:pt-16">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-          <div class="order-2 md:order-1">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="badge badge-success badge-outline">Disponível para freelas</span>
-              <span class="badge badge-outline">Recife, PE</span>
-            </div>
-            <h1 class="mt-5 text-5xl md:text-7xl font-extrabold leading-tight">Kauã Vilarim</h1>
-            <h2 class="mt-2 text-xl md:text-2xl opacity-90">Desenvolvedor de software</h2>
-            <p class="mt-4 text-base md:text-lg opacity-90 max-w-xl">Java • Spring Boot • APIs RESTful • SQL</p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="#projetos" class="btn btn-primary btn-md">Ver projetos</a>
-              <a href="https://github.com/Miraliv" target="_blank" class="btn btn-outline btn-md"><i data-lucide="github" class="mr-2 h-4 w-4"></i> GitHub</a>
-              <a href="https://www.linkedin.com/in/kaua-vilarim/" target="_blank" class="btn btn-outline btn-md"><i data-lucide="linkedin" class="mr-2 h-4 w-4"></i> LinkedIn</a>
-            </div>
-          </div>
-
-          <div class="order-1 md:order-2 relative flex justify-center">
-            <div class="relative w-64 md:w-80">
-              <div class="absolute -inset-6 rounded-full blur-2xl opacity-60 bg-gradient-to-tr from-primary/50 via-secondary/40 to-accent/50"></div>
-              <div class="card bg-base-100/40 backdrop-blur border border-base-content/10 rounded-3xl shadow">
-                <figure class="p-6">
-                  <div class="avatar placeholder">
-                    <div class="w-44 md:w-56 rounded-full bg-neutral/20 text-neutral-content ring ring-primary/60 ring-offset-4 ring-offset-base-100">
-                      <img src="images/Vilarim.jpeg" alt="Kauã Vilarim" width="224" height="224"> </div>
-                  </div>
-                </figure>
-                <div class="card-body pt-0">
-                  <div class="stats shadow">
-                    <div class="stat"><div class="stat-title">Back-end</div><div class="stat-value text-lg">Java + Spring</div><div class="stat-desc">APIs REST</div></div>
-                    <div class="stat"><div class="stat-title">Banco</div><div class="stat-value text-lg">MySQL</div><div class="stat-desc">JPA/Hibernate</div></div>
-                    <div class="stat"><div class="stat-title">Dev</div><div class="stat-value text-lg">Git & Docker</div><div class="stat-desc">Fluxo limpo</div></div>
-                  </div>
+    <!-- HERO / INÍCIO: seção principal (nome, cargo, CTA). -->
+    <section id="inicio" class="relative flex items-center justify-center min-h-screen md:h-screen">
+        
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-5 flex flex-col items-center gap-16 md:gap-24 py-20 md:py-0">
+            <div class="max-w-2xl">
+                <!-- BADGES: disponibilidade e localização -->
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <span class="badge badge-success badge-outline">Disponível para freelas</span>
+                    <span class="badge badge-outline">Recife, PE</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-10 flex justify-center">
-          <a href="#solucoes" class="btn btn-circle btn-ghost animate-bounce" aria-label="Role"><i data-lucide="chevrons-down"></i></a>
-        </div>
-      </div>
-    </section>
 
-    <section id="solucoes" class="py-20">
-      <div class="container mx-auto px-5">
-        <h2 class="text-3xl md:text-4xl font-extrabold">O que eu posso fazer pelo seu negócio?</h2>
-        <p class="opacity-80 mt-2">Tradução das minhas habilidades técnicas em soluções para você.</p>
-        
-        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <i data-lucide="network" class="text-primary"></i>
-              <h3 class="card-title mt-2">APIs e Integrações</h3>
-              <p>Conecto seus sistemas, integro ferramentas de terceiros e preparo sua aplicação para escalar de forma segura e performática.</p>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <i data-lucide="app-window" class="text-primary"></i>
-              <h3 class="card-title mt-2">Sistemas Web Sob Medida</h3>
-              <p>Transformo seus processos manuais (planilhas, papéis) em um sistema web ágil e centralizado, acessível de qualquer lugar.</p>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <i data-lucide="bot" class="text-primary"></i>
-              <h3 class="card-title mt-2">Automação e Bots</h3>
-              <p>Crio robôs e scripts para automatizar tarefas repetitivas (como no meu projeto de ChatBot), economizando seu tempo e dinheiro.</p>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <i data-lucide="shield-check" class="text-primary"></i>
-              <h3 class="card-title mt-2">Manutenção e Evolução</h3>
-              <p>Cuido do seu sistema legado, aplicando melhorias, corrigindo falhas e garantindo que ele continue seguro e funcional.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                <!-- TITULO PRINCIPAL -->
+                <h1 class="mt-5 text-5xl md:text-7xl font-extrabold leading-tight font-heading">Kauã Vilarim</h1>
+                <h2 class="mt-2 text-xl md:text-2xl opacity-90">Desenvolvedor de software</h2>
+                <p class="mt-4 text-base md:text-lg opacity-90 max-w-xl mx-auto">Java • Spring Boot • APIs RESTful • SQL</p>
 
-
-    <section id="projetos" class="relative py-20">
-      <div class="container mx-auto px-5">
-        <div class="flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h2 class="text-3xl md:text-4xl font-extrabold">Projetos em destaque</h2>
-            <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
-          </div>
-          <div role="tablist" class="tabs tabs-bordered">
-            <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
-            <button role="tab" class="tab" data-filter="backend">Back-end</button>
-            <button role="tab" class="tab" data-filter="frontend">Front-end</button>
-            <button role="tab" class="tab" data-filter="bot">Bots</button>
-          </div>
-        </div>
-
-        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
-            <figure class="relative">
-              <img src="images/Apiario.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/Apiario.png" />
-              <div class="absolute right-3 top-3 badge badge-primary">Banco de dados</div>
-            </figure>
-            <div class="card-body">
-              <h3 class="card-title">Apiário CRM (CRUD)</h3>
-              <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL. Deploy com Docker/Railway. Possui front-end simples desenvolvido com Bootstrap</p>
-              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div><div class="badge badge-outline">Bootstrap</div></div>
-              <div class="card-actions justify-end mt-4">
-                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
-            <figure class="relative">
-              <img src="images/SpringAI_interface.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/SpringAI_interface.png" />
-              <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
-            </figure>
-            <div class="card-body">
-              <h3 class="card-title">ChatBot inteligente</h3>
-              <p>Feito em Java 21 com Spring Boot, integrado ao modelo Llama3 (via Ollama). Interface web simples com Tailwind+DaisyUI+JavaScript e chamadas assíncronas via Axios.</p>
-              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring AI</div><div class="badge badge-outline">HTML</div><div class="badge badge-outline">Tailwind</div></div>
-              <div class="card-actions justify-end mt-4">
-                <a href="https://github.com/Miraliv/SpringAI" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
-            <figure class="relative">
-              <img src="images/portfolio.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/portfolio.png" />
-              <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
-            </figure>
-            <div class="card-body">
-              <h3 class="card-title">Este portfólio</h3>
-              <p>Este próprio portfólio desenvolvido com HTML+Tailwind+DaisyUI</p>
-              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">TailwindCSS</div><div class="badge badge-outline">DaisyUI</div></div>
-              <div class="card-actions justify-end mt-4">
-                <a href="https://github.com/Miraliv/Kaua-Vilarim-portfolio" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <input type="checkbox" id="imageModal" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box relative w-[90vw] h-[90vh] max-w-none max-h-none p-0">
-          <img id="modalImage" src="" alt="Imagem ampliada" class="w-full h-full object-contain" />
-          <label for="imageModal" class="btn btn-circle btn-sm absolute top-2 right-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-          </label>
-        </div>
-        <label for="imageModal" class="modal-backdrop"></label>
-      </div>
-    </section>
-
-    <section id="stack" class="py-20">
-      <div class="container mx-auto px-5">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Tech Stack</h2>
-        <p class="opacity-80 mt-2">Ferramentas e práticas que uso no dia a dia.</p>
-
-        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">Back‑end</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">Java</span>
-                <span class="badge badge-outline">Spring Boot</span>
-                <span class="badge badge-outline">Spring Data JPA</span>
-                <span class="badge badge-outline">RESTful API</span>
-                <span class="badge badge-outline">Microservices</span>
-                <span class="badge badge-outline">JPA/Hibernate</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">Front‑end</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">HTML</span>
-                <span class="badge badge-outline">CSS</span>
-                <span class="badge badge-outline">TailwindCSS</span>
-                <span class="badge badge-outline">JavaScript</span>
-                <span class="badge badge-outline">Angular</span>
-              </div>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">Banco de Dados</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">MySQL</span>
-                <span class="badge badge-outline">NoSQL</span>
-                <span class="badge badge-outline">PostgreSQL</span>
-              </div>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">Qualidade</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">JUnit</span>
-                <span class="badge badge-outline">Boas práticas</span>
-              </div>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">DevOps</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">Docker</span>
-                <span class="badge badge-outline">Git & GitHub</span>
-              </div>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">Processos</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">Scrum</span>
-                <span class="badge badge-outline">Kanban</span>
-              </div>
-            </div>
-          </div>
-          <div class="card bg-base-100/40 border border-base-content/10">
-            <div class="card-body">
-              <h3 class="card-title">Idiomas</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-outline">Inglês avançado</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="jornada" class="py-20 relative isolate">
-      <div class="container mx-auto px-5">
-        <h2 class="text-3xl md:text-4xl font-extrabold">Jornada</h2>
-        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-8 text-[16px]">
-          <li>
-            <div class="timeline-middle"><i data-lucide="headphones"></i></div>
-            <div class="timeline-start md:text-end timeline-box">
-              <time class="opacity-70 font-mono">Ago 2024 — Dez 2024 (Estágio home office)</time>
-              <h3 class="font-bold text-xl md:text-2xl">Netmake — Analista de Suporte</h3>
-              <p class="mt-2 text-[16px] leading-relaxed">Atuei prestando suporte a clientes com problemas relacionados à ferramenta de desenvolvimento da empresa. Trabalhei em um ambiente internacional, colaborando com uma equipe global e atendendo clientes de diversas partes do mundo. Para isso, utilizei o inglês de forma ativa, tanto na comunicação com a equipe quanto na resolução de dúvidas e problemas apresentados pelos clientes, garantindo um atendimento eficiente e de qualidade.</p>
-            </div>
-            <hr class="bg-base-content/20"/>
-          </li>
-          <li>
-            <hr class="bg-base-content/20"/>
-            <div class="timeline-middle"><i data-lucide="server"></i></div>
-            <div class="timeline-end timeline-box">
-              <time class="opacity-70 font-mono">Mar 2024 — Ago 2024 (Estágio presencial)</time>
-              <h3 class="font-bold text-xl md:text-2xl">Prefeitura do Recife — Desenvolvedor Java</h3>
-              <p class="mt-2 text-[16px] leading-relaxed">Atuei na administração de dados de servidores públicos, com foco na validação de informações e liberação de acessos. Identifiquei oportunidades de melhoria e liderei iniciativas para automatizar processos manuais utilizando Java e Spring, o que quadruplicou a produtividade da equipe. Além disso, desenvolvi um sistema web para digitalizar e armazenar documentos que antes eram físicos, trazendo mais agilidade e segurança às informações.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="contato" class="py-20">
-      <div class="container mx-auto px-5">
-        <div class="grid lg:grid-cols-2 gap-8">
-          <div>
-            <h2 class="text-3xl md:text-4xl font-extrabold">Vamos conversar?</h2>
-            <p class="opacity-80 mt-2 max-w-xl">Use os botões abaixo para abrir seu cliente de e‑mail ou copiar os dados.</p>
-            <div class="mt-6 space-y-3">
-              <div class="flex items-center gap-3"><i data-lucide="mail"></i> <a class="link text-[16px]" href="mailto:kauavilarim@gmail.com?subject=Projeto">kauavilarim@gmail.com</a> <button class="btn btn-sm md:btn-md" data-copy="kauavilarim@gmail.com">copiar</button></div>
-              <div class="flex items-center gap-3"><i data-lucide="phone"></i> <span class="text-[16px]">(81) 99814-6314</span> <button class="btn btn-sm md:btn-md" data-copy="(81) 99814-6314">copiar</button></div>
-              <div class="flex items-center gap-3"><i data-lucide="map-pin"></i> Recife, Pernambuco</div>
-            </div>
-          </div>
-          <div>
-            <div class="card bg-base-100/40 backdrop-blur border border-base-content/10">
-              <div class="card-body">
-                <h3 class="card-title">Links rápidos</h3>
-                <div class="flex flex-col gap-2">
-                  <a class="link link-hover text-[16px]" href="https://github.com/Miraliv" target="_blank"><i data-lucide="github" class="inline h-4 w-4 mr-2"></i> GitHub</a>
-                  <a class="link link-hover text-[16px]" href="https://www.linkedin.com/in/kaua-vilarim/" target="_blank"><i data-lucide="linkedin" class="inline h-4 w-4 mr-2"></i> LinkedIn</a>
-                  <a class="link link-hover" href="#projetos"><i data-lucide="folder-open" class="inline h-4 w-4 mr-2"></i> Projetos</a>
+                <!-- CTA: Ver projetos, GitHub, LinkedIn -->
+                <div class="mt-6 flex flex-wrap gap-3 justify-center">
+                    <a href="#projetos" class="btn btn-primary btn-md">Ver projetos</a>
+                    <a href="https://github.com/Miraliv" target="_blank" class="btn btn-outline btn-md"><i data-lucide="github" class="mr-2 h-4 w-4"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/kaua-vilarim/" target="_blank" class="btn btn-outline btn-md"><i data-lucide="linkedin" class="mr-2 h-4 w-4"></i> LinkedIn</a>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
+
+            <!-- SOBRE O QUE FAZ: blocos de serviço/competências -->
+            <div class="w-full">
+                <h2 class="text-3xl md:text-4xl font-extrabold font-heading">O que eu posso fazer pelo seu negócio?</h2>
+                <p class="opacity-80 mt-2">Tradução das minhas habilidades técnicas em soluções para você.</p>
+                
+                <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- CARD: API e Integrações -->
+                    <div class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:border-primary transition-colors duration-300">
+                        <div class="card-body">
+                            <i data-lucide="network" class="text-primary"></i>
+                            <h3 class="card-title mt-2 font-heading">APIs e Integrações</h3>
+                            <p class="text-sm opacity-80 mt-1">Conecto seus sistemas, integro ferramentas e preparo sua aplicação para escalar.</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD: Sistemas Web Sob Medida -->
+                    <div class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:border-primary transition-colors duration-300">
+                        <div class="card-body">
+                            <i data-lucide="app-window" class="text-primary"></i>
+                            <h3 class="card-title mt-2 font-heading">Sistemas Web Sob Medida</h3>
+                            <p class="text-sm opacity-80 mt-1">Transformo seus processos manuais em um sistema web ágil e centralizado.</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD: Automação e Bots -->
+                    <div class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:border-primary transition-colors duration-300">
+                        <div class="card-body">
+                            <i data-lucide="bot" class="text-primary"></i>
+                            <h3 class="card-title mt-2 font-heading">Automação e Bots</h3>
+                            <p class="text-sm opacity-80 mt-1">Crio robôs e scripts para automatizar tarefas repetitivas, economizando seu tempo.</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD: Manutenção e Evolução -->
+                    <div class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:border-primary transition-colors duration-300">
+                        <div class="card-body">
+                            <i data-lucide="shield-check" class="text-primary"></i>
+                            <h3 class="card-title mt-2 font-heading">Manutenção e Evolução</h3>
+                            <p class="text-sm opacity-80 mt-1">Cuido do seu sistema legado, aplicando melhorias e garantindo sua segurança.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
     </section>
+    
+    <!-- MAIN: container para seções de conteúdo (Projetos, Stack, Jornada, Contato). -->
+    <main class="backdrop-blur supports-[backdrop-filter]:bg-base-100/70 border-y border-base-content/10">
 
-    <button class="btn btn-primary btn-circle fixed bottom-6 right-6 z-40 shadow-lg animate-pulse" 
-            onclick="terminal_modal.showModal()" 
-            aria-label="Abrir terminal interativo">
-      <i data-lucide="terminal"></i>
-    </button>
+        <!-- SEÇÃO: Projetos -->
+        <section id="projetos" class="relative py-20">
+            <div class="container mx-auto px-5">
+                <div class="flex items-end justify-between gap-4 flex-wrap">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold font-heading">Projetos em destaque</h2>
+                        <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
+                    </div>
 
-    <dialog id="terminal_modal" class="modal">
-      <div class="modal-box w-11/12 max-w-3xl bg-neutral text-neutral-content p-0">
-        <div class="p-4 border-b border-base-content/10">
-          <h3 class="font-bold text-lg">Ksh (Kauã Shell)</h3>
-          <p class="text-sm opacity-70">Digite 'help' para ver a lista de comandos.</p>
+                    <!-- FILTRO: abas que controlam a filtragem por categoria (data-filter usado via JS) -->
+                    <div role="tablist" class="tabs tabs-bordered">
+                        <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
+                        <button role="tab" class="tab" data-filter="backend">Back-end</button>
+                        <button role="tab" class="tab" data-filter="frontend">Front-end</button>
+                        <button role="tab" class="tab" data-filter="bot">Bots</button>
+                    </div>
+                </div>
+
+                <!-- GRID DE PROJETOS: cada article tem data-cats para filtragem -->
+                <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
+                        <figure class="relative">
+                            <!-- data-modal-src: caminho da imagem que será exibida no modal -->
+                            <img src="images/Apiario.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/Apiario.png" />
+                            <div class="absolute right-3 top-3 badge badge-primary">Banco de dados</div>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Apiário CRM (CRUD)</h3>
+                            <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL...</p>
+                            <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div><div class="badge badge-outline">Bootstrap</div></div>
+                            <div class="card-actions justify-end mt-4">
+                                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Exemplo: ChatBot inteligente (categoria bot, backend) -->
+                    <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
+                        <figure class="relative">
+                            <img src="images/SpringAI_interface.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/SpringAI_interface.png" />
+                            <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">ChatBot inteligente</h3>
+                            <p>Feito em Java 21 com Spring Boot, integrado ao modelo Llama3 (via Ollama)...</p>
+                            <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring AI</div><div class="badge badge-outline">HTML</div><div class="badge badge-outline">Tailwind</div></div>
+                            <div class="card-actions justify-end mt-4">
+                                <a href="https://github.com/Miraliv/SpringAI" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Exemplo: Este portfólio (frontend) -->
+                    <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
+                        <figure class="relative">
+                            <img src="images/portfolio.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/portfolio.png" />
+                            <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Este portfólio</h3>
+                            <p>Este próprio portfólio desenvolvido com HTML+Tailwind+DaisyUI</p>
+                            <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">TailwindCSS</div><div class="badge badge-outline">DaisyUI</div></div>
+                            <div class="card-actions justify-end mt-4">
+                                <a href="https://github.com/Miraliv/Kaua-Vilarim-portfolio" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- IMAGE MODAL: checkbox-driven modal (DaisyUI). -->
+            <input type="checkbox" id="imageModal" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box relative w-[90vw] h-[90vh] max-w-none max-h-none p-0">
+                    <!-- imagem ampliada via data-modal-src -->
+                    <img id="modalImage" src="" alt="Imagem ampliada" class="w-full h-full object-contain" />
+                    <!-- botão de fechar -->
+                    <label for="imageModal" class="btn btn-circle btn-sm absolute top-2 right-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </label>
+                </div>
+                <label for="imageModal" class="modal-backdrop"></label>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Tech Stack -->
+        <section id="stack" class="py-20">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-extrabold font-heading">Tech Stack</h2>
+                <p class="opacity-80 mt-2">Ferramentas e práticas que uso no dia a dia.</p>
+                <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Cada card descreve uma área/skill -->
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Back‑end</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">Java</span>
+                                <span class="badge badge-outline">Spring Boot</span>
+                                <span class="badge badge-outline">Spring Data JPA</span>
+                                <span class="badge badge-outline">RESTful API</span>
+                                <span class="badge badge-outline">Microservices</span>
+                                <span class="badge badge-outline">JPA/Hibernate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Front‑end</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">HTML</span>
+                                <span class="badge badge-outline">CSS</span>
+                                <span class="badge badge-outline">TailwindCSS</span>
+                                <span class="badge badge-outline">JavaScript</span>
+                                <span class="badge badge-outline">Angular</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Banco de Dados</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">MySQL</span>
+                                <span class="badge badge-outline">NoSQL</span>
+                                <span class="badge badge-outline">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Qualidade</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">JUnit</span>
+                                <span class="badge badge-outline">Boas práticas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">DevOps</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">Docker</span>
+                                <span class="badge badge-outline">Git & GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Processos</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">Scrum</span>
+                                <span class="badge badge-outline">Kanban</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-base-100/40 border border-base-content/10">
+                        <div class="card-body">
+                            <h3 class="card-title font-heading">Idiomas</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-outline">Inglês avançado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Jornada (linha do tempo) -->
+        <section id="jornada" class="py-20 relative isolate">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-extrabold font-heading">Jornada</h2>
+                <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-8 text-[16px]">
+                    <li>
+                        <div class="timeline-middle"><i data-lucide="headphones"></i></div>
+                        <div class="timeline-start md:text-end timeline-box md:max-w-lg">
+                            <time class="opacity-70 font-mono">Ago 2024 — Dez 2024 (Estágio home office)</time>
+                            <h3 class="font-bold text-xl md:text-2xl font-heading">Netmake — Analista de Suporte</h3>
+                            <p class="mt-2 text-[16px] leading-relaxed">Atuei prestando suporte a clientes com problemas relacionados à ferramenta de desenvolvimento da empresa. Trabalhei em um ambiente internacional, colaborando com uma equipe global e atendendo clientes de diversas partes do mundo. Para isso, utilizei o inglês de forma ativa, tanto na comunicação com a equipe quanto na resolução de dúvidas e problemas apresentados pelos clientes, garantindo um atendimento eficiente e de qualidade.</p>
+                        </div>
+                        <hr class="bg-base-content/20"/>
+                    </li>
+                    <li>
+                        <hr class="bg-base-content/20"/>
+                        <div class="timeline-middle"><i data-lucide="server"></i></div>
+                        <div class="timeline-end timeline-box md:max-w-lg">
+                            <time class="opacity-70 font-mono">Mar 2024 — Ago 2024 (Estágio presencial)</time>
+                            <h3 class="font-bold text-xl md:text-2xl font-heading">Prefeitura do Recife — Desenvolvedor Java</h3>
+                            <p class="mt-2 text-[16px] leading-relaxed">Atuei na administração de dados de servidores públicos, com foco na validação de informações e liberação de acessos. Identifiquei oportunidades de melhoria e liderei iniciativas para automatizar processos manuais utilizando Java e Spring, o que quadruplicou a produtividade da equipe. Além disso, desenvolvi um sistema web para digitalizar e armazenar documentos que antes eram físicos, trazendo mais agilidade e segurança às informações.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Contato - informações e botões de cópia -->
+        <section id="contato" class="py-20">
+            <div class="container mx-auto px-5">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold font-heading">Vamos conversar?</h2>
+                        <p class="opacity-80 mt-2 max-w-xl">Use os botões abaixo para abrir seu cliente de e‑mail ou copiar os dados.</p>
+                        <div class="mt-6 space-y-3">
+                            <!-- data-copy é usado por main.js para copiar para clipboard -->
+                            <div class="flex items-center gap-3"><i data-lucide="mail"></i> <a class="link text-[16px]" href="mailto:vilarim.dev@gmail.com?subject=Projeto">vilarim.dev@gmail.com</a> <button class="btn btn-sm md:btn-md" data-copy="kauavilarim@gmail.com">copiar</button></div>
+                            <div class="flex items-center gap-3"><i data-lucide="phone"></i> <span class="text-[16px]">(81) 99814-6314</span> <button class="btn btn-sm md:btn-md" data-copy="(81) 99814-6314">copiar</button></div>
+                            <div class="flex items-center gap-3"><i data-lucide="map-pin"></i> Recife, Pernambuco</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card bg-base-100/40 border border-base-content/10">
+                            <div class="card-body">
+                                <h3 class="card-title font-heading">Links rápidos</h3>
+                                <div class="flex flex-col gap-2">
+                                    <a class="link link-hover text-[16px]" href="https://github.com/Miraliv" target="_blank"><i data-lucide="github" class="inline h-4 w-4 mr-2"></i> GitHub</a>
+                                    <a class="link link-hover text-[16px]" href="https://www.linkedin.com/in/kaua-vilarim/" target="_blank"><i data-lucide="linkedin" class="inline h-4 w-4 mr-2"></i> LinkedIn</a>
+                                    <a class="link link-hover" href="#projetos"><i data-lucide="folder-open" class="inline h-4 w-4 mr-2"></i> Projetos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    </main> 
+
+    <!-- FOOTER: ano dinâmico preenchido via JS e botão voltar ao topo -->
+    <footer class="py-10 border-t border-base-content/10 backdrop-blur supports-[backdrop-filter]:bg-base-100/70">
+        <div class="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="opacity-70">© <span id="year"></span> Kauã Vilarim.</p>
+            <a class="btn btn-ghost btn-sm" href="#inicio" aria-label="Topo"><i data-lucide="arrow-up"></i></a>
         </div>
-        
-        <div id="terminal-output" class="p-4 h-96 overflow-y-auto text-sm">
-          <div class="opacity-70">Bem-vindo ao meu portfólio. (v1.0.0)</div>
-          <div class="opacity-70">Último login: [data e hora]</div>
-        </div>
-        
-        <div class="p-4 border-t border-base-content/10">
-          <form id="terminal-form" class="flex items-center gap-2">
-            <label for="terminal-input" class="flex-shrink-0 text-primary">~/kaua $</label>
-            <input id="terminal-input" type="text" class="input input-ghost w-full p-0 focus:outline-none focus:border-none focus:ring-0 terminal-input" autocomplete="off" />
-          </form>
-        </div>
-      </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-
-
-    <footer class="py-10 border-t border-base-content/10">
-      <div class="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="opacity-70">© <span id="year"></span> Kauã Vilarim.</p>
-        <a class="btn btn-ghost btn-sm" href="#inicio" aria-label="Topo"><i data-lucide="arrow-up"></i></a>
-      </div>
     </footer>
 
+    <!-- SCRIPTS DE TERCEIROS: three.js + Vanta.js (para o efeito de background) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <!-- main.js: lógica de tema, filtros, modal de imagem e copiar para clipboard -->
     <script src="assets/js/main.js" defer></script>
 
-
+    <!-- Inicialização do Lucide (ícones SVG) com fallback de erro -->
     <script>
-      /* O script 'lucide' é carregado no <head>.
-        Este listener espera o DOM estar pronto (o que o 'defer' acima garante)
-        E SÓ ENTÃO tenta carregar os ícones.
-      */
-      document.addEventListener("DOMContentLoaded", () => {
-         try {
-            lucide.createIcons();
-         } catch(e) { 
-            console.error("Erro ao inicializar Lucide Icons:", e); 
-         }
-      });
+        document.addEventListener("DOMContentLoaded", () => {
+           try {
+                lucide.createIcons();
+           } catch(e) { 
+                console.error("Erro ao inicializar Lucide Icons:", e); 
+           }
+        });
     </script>
- 
-  </body>
+
+</body>
 </html>
