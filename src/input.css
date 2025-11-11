@@ -1,10 +1,14 @@
-/* input.css - Tailwind v4 (CSS-first) + DaisyUI plugin */
+/* src/input.css (VERSÃO CORRETA E FINAL) */
 @import "tailwindcss";
 
- @plugin "daisyui" {
-   themes: light , night --default;
- }
+/* * Usando a sintaxe de 'flags' que você encontrou na documentação.
+* Define 'light' e 'night', e marca 'night' como o default.
+*/
+@plugin "daisyui" {
+  themes: light, night --default;
+}
 
 /* ajustes custom */
-html { scroll-behavior: smooth; }
-
+html { 
+  scroll-behavior: smooth; 
+}

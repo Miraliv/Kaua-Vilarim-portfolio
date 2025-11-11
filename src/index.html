@@ -5,35 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kauã Vilarim — Portfólio</title>
     <meta name="description" content="Portfólio de Kauã Vilarim — Desenvolvedor de software (Java | Spring Boot | APIs REST)." />
-
-    <!-- Fonts -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
-    <!-- Tailwind + DaisyUI CSS  -->
-      <link href="./output.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet" />
 
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      /* Para o cursor piscando do terminal */
+      .terminal-input::after {
+        content: "▋";
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+      /* Força a fonte mono no terminal */
+      #terminal-modal {
+        font-family: "JetBrains Mono", monospace;
+      }
+    </style>
 
   </head>
 
-  
   <body class="bg-base-100 text-base-content min-h-screen relative">
-    <!-- global bg -->
     <div class="pointer-events-none fixed inset-0 -z-20 hero-bg"></div>
     <div class="pointer-events-none fixed inset-0 -z-10 grid-dots"></div>
 
-    <!-- NAVBAR (fix: horizontal, responsive) -->
     <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-base-100/70 border-b border-base-content/10">
       <div class="navbar container mx-auto px-4">
         <div class="navbar-start">
           <a href="#inicio" class="btn btn-ghost px-2 md:px-3 text-lg md:text-2xl font-extrabold tracking-tight">KV <span class="hidden sm:inline">• Kauã Vilarim</span></a>
         </div>
         <div class="navbar-center hidden md:flex">
-          <!-- increased navbar text slightly -->
           <ul class="menu menu-horizontal text-base md:text-lg">
+            <li><a class="nav-link" href="#solucoes">Soluções</a></li>
             <li><a class="nav-link" href="#projetos">Projetos</a></li>
             <li><a class="nav-link" href="#stack">Stack</a></li>
             <li><a class="nav-link" href="#jornada">Jornada</a></li>
@@ -49,8 +58,8 @@
           </button>
           <div class="md:hidden dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-square"><i data-lucide="menu"></i></label>
-            <!-- mobile menu text increased too -->
             <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base">
+              <li><a href="#solucoes">Soluções</a></li>
               <li><a href="#projetos">Projetos</a></li>
               <li><a href="#stack">Stack</a></li>
               <li><a href="#jornada">Jornada</a></li>
@@ -61,7 +70,6 @@
       </div>
     </header>
 
-    <!-- HERO-->
     <section id="inicio" class="relative">
       <div class="container mx-auto px-5 pt-12 md:pt-16">
         <div class="grid md:grid-cols-2 gap-10 items-center">
@@ -87,8 +95,7 @@
                 <figure class="p-6">
                   <div class="avatar placeholder">
                     <div class="w-44 md:w-56 rounded-full bg-neutral/20 text-neutral-content ring ring-primary/60 ring-offset-4 ring-offset-base-100">
-                      <img src="images/Vilarim.jpeg" alt="Kauã Vilarim">
-                    </div>
+                      <img src="images/Vilarim.jpeg" alt="Kauã Vilarim" width="224" height="224"> </div>
                   </div>
                 </figure>
                 <div class="card-body pt-0">
@@ -103,101 +110,125 @@
           </div>
         </div>
         <div class="mt-10 flex justify-center">
-          <a href="#projetos" class="btn btn-circle btn-ghost animate-bounce" aria-label="Role"><i data-lucide="chevrons-down"></i></a>
+          <a href="#solucoes" class="btn btn-circle btn-ghost animate-bounce" aria-label="Role"><i data-lucide="chevrons-down"></i></a>
         </div>
       </div>
     </section>
 
-    <!-- PROJETOS (thumb padrão) -->
+    <section id="solucoes" class="py-20">
+      <div class="container mx-auto px-5">
+        <h2 class="text-3xl md:text-4xl font-extrabold">O que eu posso fazer pelo seu negócio?</h2>
+        <p class="opacity-80 mt-2">Tradução das minhas habilidades técnicas em soluções para você.</p>
+        
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <i data-lucide="network" class="text-primary"></i>
+              <h3 class="card-title mt-2">APIs e Integrações</h3>
+              <p>Conecto seus sistemas, integro ferramentas de terceiros e preparo sua aplicação para escalar de forma segura e performática.</p>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <i data-lucide="app-window" class="text-primary"></i>
+              <h3 class="card-title mt-2">Sistemas Web Sob Medida</h3>
+              <p>Transformo seus processos manuais (planilhas, papéis) em um sistema web ágil e centralizado, acessível de qualquer lugar.</p>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <i data-lucide="bot" class="text-primary"></i>
+              <h3 class="card-title mt-2">Automação e Bots</h3>
+              <p>Crio robôs e scripts para automatizar tarefas repetitivas (como no meu projeto de ChatBot), economizando seu tempo e dinheiro.</p>
+            </div>
+          </div>
+          <div class="card bg-base-100/40 border border-base-content/10">
+            <div class="card-body">
+              <i data-lucide="shield-check" class="text-primary"></i>
+              <h3 class="card-title mt-2">Manutenção e Evolução</h3>
+              <p>Cuido do seu sistema legado, aplicando melhorias, corrigindo falhas e garantindo que ele continue seguro e funcional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <section id="projetos" class="relative py-20">
-  <div class="container mx-auto px-5">
-    <div class="flex items-end justify-between gap-4 flex-wrap">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-extrabold">Projetos em destaque</h2>
-        <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
+      <div class="container mx-auto px-5">
+        <div class="flex items-end justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Projetos em destaque</h2>
+            <p class="opacity-80 mt-2">Alguns estudos, freelas e provas de conceito.</p>
+          </div>
+          <div role="tablist" class="tabs tabs-bordered">
+            <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
+            <button role="tab" class="tab" data-filter="backend">Back-end</button>
+            <button role="tab" class="tab" data-filter="frontend">Front-end</button>
+            <button role="tab" class="tab" data-filter="bot">Bots</button>
+          </div>
+        </div>
+
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
+            <figure class="relative">
+              <img src="images/Apiario.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/Apiario.png" />
+              <div class="absolute right-3 top-3 badge badge-primary">Banco de dados</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Apiário CRM (CRUD)</h3>
+              <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL. Deploy com Docker/Railway. Possui front-end simples desenvolvido com Bootstrap</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div><div class="badge badge-outline">Bootstrap</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
+            <figure class="relative">
+              <img src="images/SpringAI_interface.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/SpringAI_interface.png" />
+              <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">ChatBot inteligente</h3>
+              <p>Feito em Java 21 com Spring Boot, integrado ao modelo Llama3 (via Ollama). Interface web simples com Tailwind+DaisyUI+JavaScript e chamadas assíncronas via Axios.</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring AI</div><div class="badge badge-outline">HTML</div><div class="badge badge-outline">Tailwind</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv/SpringAI" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
+            <figure class="relative">
+              <img src="images/portfolio.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" data-modal-src="images/portfolio.png" />
+              <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
+            </figure>
+            <div class="card-body">
+              <h3 class="card-title">Este portfólio</h3>
+              <p>Este próprio portfólio desenvolvido com HTML+Tailwind+DaisyUI</p>
+              <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">TailwindCSS</div><div class="badge badge-outline">DaisyUI</div></div>
+              <div class="card-actions justify-end mt-4">
+                <a href="https://github.com/Miraliv/Kaua-Vilarim-portfolio" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <div role="tablist" class="tabs tabs-bordered">
-        <button role="tab" class="tab tab-active" data-filter="all">Tudo</button>
-        <button role="tab" class="tab" data-filter="backend">Back-end</button>
-        <button role="tab" class="tab" data-filter="frontend">Front-end</button>
-        <button role="tab" class="tab" data-filter="bot">Bots</button>
+
+      <input type="checkbox" id="imageModal" class="modal-toggle" />
+      <div class="modal">
+        <div class="modal-box relative w-[90vw] h-[90vh] max-w-none max-h-none p-0">
+          <img id="modalImage" src="" alt="Imagem ampliada" class="w-full h-full object-contain" />
+          <label for="imageModal" class="btn btn-circle btn-sm absolute top-2 right-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          </label>
+        </div>
+        <label for="imageModal" class="modal-backdrop"></label>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card 1 -->
-      <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="backend,api">
-        <figure class="relative">
-          <img src="images/Apiario.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" onclick="openModal('images/Apiario.png')" />
-          <div class="absolute right-3 top-3 badge badge-primary">Banco de dados</div>
-        </figure>
-        <div class="card-body">
-          <h3 class="card-title">Apiário CRM (CRUD)</h3>
-          <p>Gestão de colheitas e clientes. API REST com Spring Boot e MySQL. Deploy com Docker/Railway. Possui front-end simples desenvolvido com Bootstrap</p>
-          <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring Data JPA</div><div class="badge badge-outline">MySQL</div><div class="badge badge-outline">Bootstrap</div></div>
-          <div class="card-actions justify-end mt-4">
-            <a href="https://github.com/Miraliv" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="bot,backend">
-        <figure class="relative">
-          <img src="images/SpringAI_interface.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" onclick="openModal('images/SpringAI_interface.png')" />
-          <div class="absolute right-3 top-3 badge badge-accent">Spring AI</div>
-        </figure>
-        <div class="card-body">
-          <h3 class="card-title">ChatBot inteligente</h3>
-          <p>Feito em Java 21 com Spring Boot, integrado ao modelo Llama3 (via Ollama). Interface web simples com Tailwind+DaisyUI+JavaScript e chamadas assíncronas via Axios.</p>
-          <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">Java</div><div class="badge badge-outline">Spring AI</div><div class="badge badge-outline">HTML</div><div class="badge badge-outline">Tailwind</div></div>
-          <div class="card-actions justify-end mt-4">
-            <a href="https://github.com/Miraliv/SpringAI" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="card bg-base-100/40 backdrop-blur border border-base-content/10 hover:shadow-xl transition hover:-translate-y-1" data-cats="frontend">
-        <figure class="relative">
-          <img src="images/portfolio.png" alt="Thumb padrão do projeto" class="h-48 w-full object-cover cursor-pointer" loading="lazy" onclick="openModal('images/portfolio.png')" />
-          <div class="absolute right-3 top-3 badge badge-secondary">Tailwind</div>
-        </figure>
-        <div class="card-body">
-          <h3 class="card-title">Este portfólio</h3>
-          <p>Este próprio portfólio desenvolvido com HTML+Tailwind+DaisyUI</p>
-          <div class="flex gap-2 flex-wrap mt-2"><div class="badge badge-outline">HTML</div><div class="badge badge-outline">TailwindCSS</div><div class="badge badge-outline">DaisyUI</div></div>
-          <div class="card-actions justify-end mt-4">
-            <a href="https://github.com/Miraliv/Kaua-Vilarim-portfolio" target="_blank" class="btn btn-sm btn-outline"><i data-lucide="github" class="h-4 w-4 mr-1"></i> Código</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <input type="checkbox" id="imageModal" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-box relative w-[90vw] h-[90vh] max-w-none max-h-none p-0">
-      <img id="modalImage" src="" alt="Imagem ampliada" class="w-full h-full object-contain" />
-      <label for="imageModal" class="btn btn-circle btn-sm absolute top-2 right-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-      </label>
-    </div>
-    <label for="imageModal" class="modal-backdrop"></label>
-  </div>
-</section>
-
-<script>
-function openModal(imageSrc) {
-  const modalToggle = document.getElementById('imageModal');
-  const modalImage = document.getElementById('modalImage');
-  modalImage.src = imageSrc;
-  modalToggle.checked = true;
-}
-</script>
-
-    <!-- STACK (reforçado) -->
     <section id="stack" class="py-20">
       <div class="container mx-auto px-5">
         <h2 class="text-3xl md:text-4xl font-extrabold">Tech Stack</h2>
@@ -279,40 +310,32 @@ function openModal(imageSrc) {
       </div>
     </section>
 
-    <!-- JORNADA (Timeline with icon snapped to the start) -->
-<section id="jornada" class="py-20 relative isolate">
-  <div class="container mx-auto px-5">
-    <h2 class="text-3xl md:text-4xl font-extrabold">Jornada</h2>
-    <!-- increased timeline text for better readability -->
-    <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-8 text-[16px]">
-      
-      <!-- Netmake (mais recente primeiro) -->
-      <li>
-        <div class="timeline-middle"><i data-lucide="headphones"></i></div>
-        <div class="timeline-start md:text-end timeline-box">
-          <time class="opacity-70 font-mono">Ago 2024 — Dez 2024 (Estágio home office)</time>
-          <h3 class="font-bold text-xl md:text-2xl">Netmake — Analista de Suporte</h3>
-          <p class="mt-2 text-[16px] leading-relaxed">Atuei prestando suporte a clientes com problemas relacionados à ferramenta de desenvolvimento da empresa. Trabalhei em um ambiente internacional, colaborando com uma equipe global e atendendo clientes de diversas partes do mundo. Para isso, utilizei o inglês de forma ativa, tanto na comunicação com a equipe quanto na resolução de dúvidas e problemas apresentados pelos clientes, garantindo um atendimento eficiente e de qualidade.</p>
-        </div>
-        <hr class="bg-base-content/20"/>
-      </li>
+    <section id="jornada" class="py-20 relative isolate">
+      <div class="container mx-auto px-5">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Jornada</h2>
+        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-8 text-[16px]">
+          <li>
+            <div class="timeline-middle"><i data-lucide="headphones"></i></div>
+            <div class="timeline-start md:text-end timeline-box">
+              <time class="opacity-70 font-mono">Ago 2024 — Dez 2024 (Estágio home office)</time>
+              <h3 class="font-bold text-xl md:text-2xl">Netmake — Analista de Suporte</h3>
+              <p class="mt-2 text-[16px] leading-relaxed">Atuei prestando suporte a clientes com problemas relacionados à ferramenta de desenvolvimento da empresa. Trabalhei em um ambiente internacional, colaborando com uma equipe global e atendendo clientes de diversas partes do mundo. Para isso, utilizei o inglês de forma ativa, tanto na comunicação com a equipe quanto na resolução de dúvidas e problemas apresentados pelos clientes, garantindo um atendimento eficiente e de qualidade.</p>
+            </div>
+            <hr class="bg-base-content/20"/>
+          </li>
+          <li>
+            <hr class="bg-base-content/20"/>
+            <div class="timeline-middle"><i data-lucide="server"></i></div>
+            <div class="timeline-end timeline-box">
+              <time class="opacity-70 font-mono">Mar 2024 — Ago 2024 (Estágio presencial)</time>
+              <h3 class="font-bold text-xl md:text-2xl">Prefeitura do Recife — Desenvolvedor Java</h3>
+              <p class="mt-2 text-[16px] leading-relaxed">Atuei na administração de dados de servidores públicos, com foco na validação de informações e liberação de acessos. Identifiquei oportunidades de melhoria e liderei iniciativas para automatizar processos manuais utilizando Java e Spring, o que quadruplicou a produtividade da equipe. Além disso, desenvolvi um sistema web para digitalizar e armazenar documentos que antes eram físicos, trazendo mais agilidade e segurança às informações.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-      <!-- Prefeitura do Recife (mais antigo embaixo) -->
-      <li>
-        <hr class="bg-base-content/20"/>
-        <div class="timeline-middle"><i data-lucide="server"></i></div>
-        <div class="timeline-end timeline-box">
-          <time class="opacity-70 font-mono">Mar 2024 — Ago 2024 (Estágio presencial)</time>
-          <h3 class="font-bold text-xl md:text-2xl">Prefeitura do Recife — Desenvolvedor Java</h3>
-          <p class="mt-2 text-[16px] leading-relaxed">Atuei na administração de dados de servidores públicos, com foco na validação de informações e liberação de acessos. Identifiquei oportunidades de melhoria e liderei iniciativas para automatizar processos manuais utilizando Java e Spring, o que quadruplicou a produtividade da equipe. Além disso, desenvolvi um sistema web para digitalizar e armazenar documentos que antes eram físicos, trazendo mais agilidade e segurança às informações.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
-
-
-    <!-- CONTATO (sem backend; copiar/abrir) -->
     <section id="contato" class="py-20">
       <div class="container mx-auto px-5">
         <div class="grid lg:grid-cols-2 gap-8">
@@ -341,6 +364,37 @@ function openModal(imageSrc) {
       </div>
     </section>
 
+    <button class="btn btn-primary btn-circle fixed bottom-6 right-6 z-40 shadow-lg animate-pulse" 
+            onclick="terminal_modal.showModal()" 
+            aria-label="Abrir terminal interativo">
+      <i data-lucide="terminal"></i>
+    </button>
+
+    <dialog id="terminal_modal" class="modal">
+      <div class="modal-box w-11/12 max-w-3xl bg-neutral text-neutral-content p-0">
+        <div class="p-4 border-b border-base-content/10">
+          <h3 class="font-bold text-lg">Ksh (Kauã Shell)</h3>
+          <p class="text-sm opacity-70">Digite 'help' para ver a lista de comandos.</p>
+        </div>
+        
+        <div id="terminal-output" class="p-4 h-96 overflow-y-auto text-sm">
+          <div class="opacity-70">Bem-vindo ao meu portfólio. (v1.0.0)</div>
+          <div class="opacity-70">Último login: [data e hora]</div>
+        </div>
+        
+        <div class="p-4 border-t border-base-content/10">
+          <form id="terminal-form" class="flex items-center gap-2">
+            <label for="terminal-input" class="flex-shrink-0 text-primary">~/kaua $</label>
+            <input id="terminal-input" type="text" class="input input-ghost w-full p-0 focus:outline-none focus:border-none focus:ring-0 terminal-input" autocomplete="off" />
+          </form>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
+
     <footer class="py-10 border-t border-base-content/10">
       <div class="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="opacity-70">© <span id="year"></span> Kauã Vilarim.</p>
@@ -348,94 +402,22 @@ function openModal(imageSrc) {
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+
+
     <script>
-      // Icons
-      lucide.createIcons();
-
-      // Year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Theme toggle (fix: light <-> night) + persist
-      (function(){
-        const root = document.documentElement;
-        const btn = document.getElementById('themeToggle');
-        const saved = localStorage.getItem('theme');
-        if (saved) root.setAttribute('data-theme', saved);
-        const sync = () => {
-          const t = root.getAttribute('data-theme') || 'night';
-          btn.querySelector('.sun').classList.toggle('hidden', t !== 'light');
-          btn.querySelector('.moon').classList.toggle('hidden', t === 'light');
-        };
-        sync();
-        btn.addEventListener('click', () => {
-          const current = root.getAttribute('data-theme') || 'night';
-          const next = current === 'light' ? 'night' : 'light';
-          root.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
-          sync();
-        });
-      })();
-
-      // Filter projects (front-only)
-      (function(){
-        const tabs = document.querySelectorAll('[data-filter]');
-        const cards = document.querySelectorAll('[data-cats]');
-        tabs.forEach(tab => tab.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('tab-active'));
-          tab.classList.add('tab-active');
-          const f = tab.dataset.filter;
-          cards.forEach(c => {
-            const cats = c.dataset.cats.split(',');
-            c.classList.toggle('hidden', !(f === 'all' || cats.includes(f)));
-          });
-        }));
-      })();
-
-      // Copy buttons
-      (function(){
-        document.querySelectorAll('[data-copy]').forEach(btn => {
-          btn.addEventListener('click', async () => {
-            const text = btn.getAttribute('data-copy');
-            try { await navigator.clipboard.writeText(text); btn.textContent = 'copiado!'; setTimeout(()=> btn.textContent='copiar', 1200); } catch(e){ console.error(e); }
-          });
-        });
-      })();
-
-      // Improved active nav link on scroll (supports desktop + mobile links)
-      (function(){
-        const anchors = document.querySelectorAll('header a[href^="#"]');
-        const sections = Array.from(new Set(Array.from(anchors).map(a => a.getAttribute('href'))))
-          .map(href => document.querySelector(href))
-          .filter(Boolean);
-
-        if(!sections.length) return;
-
-        const allAnchors = Array.from(document.querySelectorAll('a[href^="#"]'));
-
-        const setActive = (href) => {
-          allAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === href));
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
-          if(visible.length > 0){
-            setActive('#' + visible[0].target.id);
-          }
-        }, { root: null, rootMargin: '-40% 0% -40% 0%', threshold: [0, 0.25, 0.5, 0.75, 1] });
-
-        sections.forEach(s => observer.observe(s));
-
-        // initial state fallback
-        window.addEventListener('load', () => {
-          const y = window.scrollY + (window.innerHeight * 0.25);
-          let current = sections[0];
-          sections.forEach(s => { if(s.offsetTop <= y) current = s; });
-          setActive('#' + current.id);
-        });
-
-      })();
-
+      /* O script 'lucide' é carregado no <head>.
+        Este listener espera o DOM estar pronto (o que o 'defer' acima garante)
+        E SÓ ENTÃO tenta carregar os ícones.
+      */
+      document.addEventListener("DOMContentLoaded", () => {
+         try {
+            lucide.createIcons();
+         } catch(e) { 
+            console.error("Erro ao inicializar Lucide Icons:", e); 
+         }
+      });
     </script>
+ 
   </body>
 </html>
