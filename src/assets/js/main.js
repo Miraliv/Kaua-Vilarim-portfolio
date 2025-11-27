@@ -65,19 +65,22 @@ document.addEventListener("DOMContentLoaded", () => {
             // 2. Pega as cores corretas para o tema atual
             const newColors = getVantaColors(t);
 
-            // 3. Cria um NOVO efeito Vanta com as cores certas
+            // 3. Cria um NOVO efeito Vanta com as cores certas e SEM MOUSE
             if (window.VANTA) {
                 vantaEffect = window.VANTA.NET({
                     el: "#vanta-bg",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
+                    
+                    // AQUI ESTÁ A MUDANÇA QUE VOCÊ PEDIU:
+                    mouseControls: false, // Desativa interação do mouse
+                    touchControls: false, // Desativa interação do toque
+                    gyroControls: false,  // Desativa giroscópio
+                    
                     minHeight: 200.00,
                     minWidth: 200.00,
                     scale: 1.00,
                     scaleMobile: 1.00,
-                    color: newColors.color, // Cor baseada no tema
-                    backgroundColor: newColors.backgroundColor, // BG baseado no tema
+                    color: newColors.color,            // Cor dinâmica
+                    backgroundColor: newColors.backgroundColor, // Fundo dinâmico
                     points: 10.00,
                     maxDistance: 20.00,
                     spacing: 15.00,
@@ -89,14 +92,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // --- FIM DA CORREÇÃO ---
         };
         
-        sync(); // Esta chamada agora cria o Vanta pela primeira vez
+        sync(); 
         
         btn.addEventListener("click", () => {
             const current = root.getAttribute("data-theme") || "night";
             const next = current === "light" ? "night" : "light";
             root.setAttribute("data-theme", next);
             localStorage.setItem("theme", next);
-            sync(); // Esta chamada vai destruir e recriar o Vanta
+            sync(); 
         });
     })();
 
