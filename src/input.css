@@ -1,11 +1,49 @@
-/* src/input.css (LIMPO E PRONTO) */
+/* src/input.css */
 @import "tailwindcss";
 
 @plugin "daisyui" {
   themes: light, night --default;
 }
 
-/* ajustes custom */
 html { 
   scroll-behavior: smooth; 
+}
+
+/* --- ANIMAÇÕES DE SCROLL (Reveal Granular) --- */
+.reveal {
+  opacity: 0;
+  /* Aumentei um pouco a distância e o tempo para ficar mais dramático e suave */
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva mais suave */
+  filter: blur(4px);
+  transition-delay: 0ms; /* Padrão sem delay */
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Classes utilitárias para a cascata (staggering) */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* --- NAVBAR TRANSIÇÃO --- */
+header {
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* --- EFEITO SPOTLIGHT (Borda seguindo mouse) --- */
+.spotlight-gradient {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(121, 62, 249, 0.4), /* Reduzi um pouco a opacidade para ficar mais sutil */
+    transparent 40%
+  );
+  pointer-events: none; 
 }

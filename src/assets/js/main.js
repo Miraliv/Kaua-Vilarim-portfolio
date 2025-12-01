@@ -1,46 +1,74 @@
 /**
+ * src/assets/js/main.js
  * Ponto de entrada principal
- * Garante que o DOM esteja carregado antes de executar os scripts
  */
 
-// Variável global para guardar o efeito Vanta
 let vantaEffect = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 2. Define o ano atual no rodapé
+    // 1. DATA NO RODAPÉ
     try {
         const yearEl = document.getElementById("year");
-        if (yearEl) {
-            yearEl.textContent = new Date().getFullYear();
-        }
-    } catch (e) {
-        console.error("Erro ao definir o ano:", e);
-    }
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+    } catch (e) { console.error("Erro ano:", e); }
 
-    // 3. Script do Modal de Imagem
+    // 2. MODAL DE IMAGEM
     (function setupImageModal() {
         const modalToggle = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
         const imageLinks = document.querySelectorAll("[data-modal-src]");
 
-        if (!modalToggle || !modalImage || imageLinks.length === 0) {
-            return;
-        }
-
-        const openModal = (imageSrc) => {
-            modalImage.src = imageSrc;
-            modalToggle.checked = true;
-        };
+        if (!modalToggle || !modalImage || imageLinks.length === 0) return;
 
         imageLinks.forEach((link) => {
             link.addEventListener("click", () => {
-                openModal(link.dataset.modalSrc);
+                modalImage.src = link.dataset.modalSrc;
+                modalToggle.checked = true;
             });
         });
     })();
 
-    // 4. [MODIFICADO] Script de Toggle de Tema (Destrói e Recria o Vanta)
+    // 3. NAVBAR DINÂMICA
+    (function setupDynamicNavbar() {
+        const header = document.querySelector('header');
+        if (!header) return;
+
+        const updateHeader = () => {
+            if (window.scrollY > 20) {
+                header.classList.remove('border-transparent');
+                header.classList.add('bg-base-100/80', 'backdrop-blur-md', 'shadow-lg', 'border-base-content/10');
+            } else {
+                header.classList.add('border-transparent');
+                header.classList.remove('bg-base-100/80', 'backdrop-blur-md', 'shadow-lg', 'border-base-content/10');
+            }
+        };
+
+        window.addEventListener('scroll', updateHeader);
+        updateHeader();
+    })();
+
+    // 4. SCROLL REVEAL (Animação de entrada)
+    (function setupScrollReveal() {
+        const elements = document.querySelectorAll('.reveal');
+        if (elements.length === 0) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1, 
+            rootMargin: "0px 0px -20px 0px" // Ajustado para disparar um pouco antes
+        });
+
+        elements.forEach(el => observer.observe(el));
+    })();
+
+    // 5. TOGGLE DE TEMA
     (function setupThemeToggle() {
         const root = document.documentElement;
         const btn = document.getElementById("themeToggle");
@@ -55,41 +83,33 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.querySelector(".sun").classList.toggle("hidden", t !== "light");
             btn.querySelector(".moon").classList.toggle("hidden", t === "light");
 
-            // --- INÍCIO DA CORREÇÃO ---
-            // 1. Destrói o efeito Vanta anterior, se existir
             if (vantaEffect) {
                 vantaEffect.destroy();
                 vantaEffect = null;
             }
 
-            // 2. Pega as cores corretas para o tema atual
             const newColors = getVantaColors(t);
 
-            // 3. Cria um NOVO efeito Vanta com as cores certas e SEM MOUSE
             if (window.VANTA) {
-                vantaEffect = window.VANTA.NET({
-                    el: "#vanta-bg",
-                    
-                    // AQUI ESTÁ A MUDANÇA QUE VOCÊ PEDIU:
-                    mouseControls: false, // Desativa interação do mouse
-                    touchControls: false, // Desativa interação do toque
-                    gyroControls: false,  // Desativa giroscópio
-                    
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: newColors.color,            // Cor dinâmica
-                    backgroundColor: newColors.backgroundColor, // Fundo dinâmico
-                    points: 10.00,
-                    maxDistance: 20.00,
-                    spacing: 15.00,
-                    showDots: false 
-                });
-            } else {
-                console.warn("Vanta.js não foi carregado a tempo.");
+                try {
+                    vantaEffect = window.VANTA.NET({
+                        el: "#vanta-bg",
+                        mouseControls: false,
+                        touchControls: false,
+                        gyroControls: false,
+                        minHeight: 200.00,
+                        minWidth: 200.00,
+                        scale: 1.00,
+                        scaleMobile: 1.00,
+                        color: newColors.color,
+                        backgroundColor: newColors.backgroundColor,
+                        points: 10.00,
+                        maxDistance: 20.00,
+                        spacing: 15.00,
+                        showDots: false 
+                    });
+                } catch (err) { console.warn("Erro Vanta:", err); }
             }
-            // --- FIM DA CORREÇÃO ---
         };
         
         sync(); 
@@ -103,25 +123,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })();
 
-    // 5. Script de Filtro de Projetos
+    // 6. FILTRO DE PROJETOS
     (function setupProjectFilter() {
         const tabs = document.querySelectorAll('[data-filter]');
         const cards = document.querySelectorAll('[data-cats]');
 
-        if (tabs.length === 0 || cards.length === 0) return;
+        if (!tabs.length || !cards.length) return;
 
         tabs.forEach(tab => tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('tab-active'));
             tab.classList.add('tab-active');
+            
             const f = tab.dataset.filter;
+            
             cards.forEach(c => {
                 const cats = c.dataset.cats.split(',');
-                c.classList.toggle('hidden', !(f === 'all' || cats.includes(f)));
+                if(f === 'all' || cats.includes(f)) {
+                    c.classList.remove('hidden');
+                    setTimeout(() => {
+                        c.classList.add('reveal'); 
+                        c.classList.add('active');
+                    }, 10);
+                } else {
+                    c.classList.add('hidden');
+                    c.classList.remove('active'); 
+                }
             });
         }));
     })();
 
-    // 6. Script de Botões de Cópia
+    // 7. BOTÕES DE CÓPIA
     (function setupCopyButtons() {
         document.querySelectorAll('[data-copy]').forEach(btn => {
             btn.addEventListener('click', async () => {
@@ -136,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })();
 
-    // 7. Script de Navegação Ativa
+    // 8. NAVEGAÇÃO ATIVA
     (function setupActiveNavScroll() {
         const allAnchors = Array.from(document.querySelectorAll('a[href^="#"]'));
         const sections = Array.from(new Set(allAnchors.map(a => a.getAttribute('href'))))
@@ -145,53 +176,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!sections.length) return;
 
-        const setActive = (href) => {
-            allAnchors.forEach(a => {
-                const isActive = a.getAttribute('href') === href;
-                a.classList.toggle('active', isActive);
-                if (isActive) {
-                    a.setAttribute('aria-current', 'page');
-                } else {
-                    a.removeAttribute('aria-current');
-                }
-            });
-        };
-
         const observer = new IntersectionObserver((entries) => {
             const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
             if (visible.length > 0) {
-                setActive('#' + visible[0].target.id);
+                allAnchors.forEach(a => {
+                    const isActive = a.getAttribute('href') === '#' + visible[0].target.id;
+                    a.classList.toggle('active', isActive);
+                    if(isActive) a.setAttribute('aria-current', 'page');
+                    else a.removeAttribute('aria-current');
+                });
             }
         }, { root: null, rootMargin: '-40% 0% -40% 0%', threshold: [0, 0.25, 0.5] });
 
         sections.forEach(s => observer.observe(s));
     })();
 
+    // 9. [NOVO] SPOTLIGHT EFFECT (Borda seguindo mouse)
+    (function setupSpotlightCards() {
+        const cards = document.querySelectorAll('.spotlight-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Define as variáveis CSS para usar no gradiente
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    })();
 
-    // 8. [REMOVIDO] Lógica do Terminal Interativo
+}); 
 
-
-    // 9. [REMOVIDO] Script de inicialização do Vanta.js
-    // (A lógica agora está no item 4, dentro da função 'sync')
-
-}); // Fim do DOMContentLoaded
-
-/**
- * [Sem alteração] Cores corrigidas para o modo Light
- */
 function getVantaColors(theme) {
-    // Cores HEx baseadas nos temas 'light' e 'night' do DaisyUI
     if (theme === "light") {
-        // Modo Claro: Fundo branco, linhas roxas (primary)
-        return {
-            color: 0x661AE6, // Cor 'primary' do DaisyUI 'light'
-            backgroundColor: 0xffffff // Cor 'base-100' do DaisyUI 'light'
-        };
+        return { color: 0x661AE6, backgroundColor: 0xffffff };
     } 
-    
-    // Modo Escuro (night)
-    return {
-        color: 0x793ef9, // Cor 'primary' do DaisyUI 'night'
-        backgroundColor: 0x1d232a // Cor 'base-100' do DaisyUI 'night'
-    };
+    return { color: 0x793ef9, backgroundColor: 0x1d232a };
 }
